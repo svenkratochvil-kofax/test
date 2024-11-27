@@ -11,4 +11,4 @@ jobs:
         with:
           dry-run: true # Check out the console output before setting this to false
           days-before-branch-stale: 1
-          days-before-branch-delete: 1
+          days-before-branch-delete: 7
