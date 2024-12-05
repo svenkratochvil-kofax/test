@@ -12,3 +12,4 @@ jobs:
           dry-run: false # Check out the console output before setting this to false
           days-before-branch-stale: 1
           days-before-branch-delete: 7
+          exempt-branches-regex: "^(main|master|parked/.*|develop/.*|release/.*|hotfix/.*)$"
