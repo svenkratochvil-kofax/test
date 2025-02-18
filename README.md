@@ -1,2 +1,3 @@
 # test
-Test
+- Test team listing.
+
