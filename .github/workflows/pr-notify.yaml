@@ -2,7 +2,7 @@ name: PR notify
 
 on:
   pull_request:
-    types: [pened, synchronize]
+    types: [opened, synchronize]
 
 jobs:
   check-reviewers:
