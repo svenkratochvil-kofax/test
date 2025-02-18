@@ -1,0 +1,28 @@
+name: PR notify
+
+on:
+  pull_request:
+    types: [pened, synchronize]
+
+jobs:
+  check-reviewers:
+    name: Check reviewers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check teams
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { context, github } = require('@actions/github');
+            const pr = context.payload.pull_request;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const reviewers = await github.rest.pulls.listRequestedReviewers({
+              owner,
+              repo,
+              pull_number: pr.number
+            });
+
+            const teamReviewers = reviewers.data.teams.map(team => team.slug);
+            console.log(`Teams that need to approve: ${teamReviewers.join(', ')}`);
